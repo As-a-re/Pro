@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Medical Care</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url("bg.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .symptom-list {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Self Medical Care</h1>
+        
+        <form id="greetingForm">
+            <label for="greeting">How are you doing?</label>
+            <input type="text" id="greeting" placeholder="Enter your response">
+            <p id="greetingOutput"></p>
+        </form>
+
+        <h2>Common Conditions and Symptoms</h2>
+        <div class="symptom-list">
+            <h3>1. Malaria</h3>
+            <p>Headache, Stomach pains, Nausea, Dizziness, Feverishness</p>
+            
+            <h3>2. Breast Cancer</h3>
+            <p>Breast lump, Rash around nipple, Swelling in armpit, Discharge from nipple, Change in structure of breast</p>
+            
+            <h3>3. Diabetes</h3>
+            <p>Feeling very thirsty, Feeling very tired, Blurred vision, Itching around private parts, Slow healing of wounds</p>
+            
+            <h3>4. Food Poisoning</h3>
+            <p>Nauseous, Vomiting, Diarrhoea, Chills, Weakness, Abdominal pain, High temperature</p>
+            
+            <h3>5. Prostate Cancer</h3>
+            <p>Pain in testicles, Frequent urinating, Difficulty in urinating, Feeling of bladder not emptied after urinating</p>
+            
+            <h3>6. Stomach Ulcer</h3>
+            <p>Stomach pains, Weight loss, Indigestion, Feeling sick, Loss of appetite</p>
+        </div>
+
+        <form id="diagnosisForm">
+            <label for="condition">Enter the number that best matches your symptoms:</label>
+            <input type="number" id="condition" min="1" max="6">
+            <input type="submit" value="Check">
+        </form>
+        
+        <div id="output"></div>
+    </div>
+
+    <script>
+        document.querySelector("#greetingForm").addEventListener("input", function(event) {
+            var greeting = document.querySelector("#greeting").value;
+            document.querySelector("#greetingOutput").textContent = greeting + ". Thanks for letting us know.";
+        });
+
+        document.querySelector("#diagnosisForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var condition = document.querySelector("#condition").value;
+            var output = document.querySelector("#output");
+            switch(condition) {
+                case "1":
+                    output.textContent = "You may have malaria. Please visit the nearest pharmacy or medical center.";
+                    break;
+                case "2":
+                    output.textContent = "You may have breast cancer. Please seek immediate medical attention.";
+                    break;
+                case "3":
+                    output.textContent = "You may have diabetes. Please check your diet and consult a medical officer.";
+                    break;
+                case "4":
+                    output.textContent = "You may have food poisoning. Please consult a medical officer for help.";
+                    break;
+                case "5":
+                    output.textContent = "You may have prostate cancer. Please find the nearest suitable medical center for help.";
+                    break;
+                case "6":
+                    output.textContent = "You may have a stomach ulcer. Please consult a medical professional for proper diagnosis and treatment.";
+                    break;
+                default:
+                    output.textContent = "Please visit the nearest healthcare center for more details about your condition.";
+            }
+        });
+    </script>
+</body>
+</html>
